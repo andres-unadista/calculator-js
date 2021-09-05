@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CalculatorService } from '../calculator.service';
 
 @Component({
   selector: 'app-form',
@@ -6,8 +7,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  @Output() outOperation = new EventEmitter<string>();
-  @Output() outAccumulated = new EventEmitter<number>();
   @Input() inputPrevAccumulated: number;
   operation: string = '';
   accumulated: number = 0;
@@ -16,7 +15,7 @@ export class FormComponent implements OnInit {
   operationPrevious: number = 0;
   statusModify: boolean = false;
 
-  constructor() {}
+  constructor(private calculatorService:CalculatorService) {}
 
   ngOnInit(): void {}
 
@@ -59,12 +58,16 @@ export class FormComponent implements OnInit {
         number,
         this.inputPrevAccumulated
       );
-      this.outOperation.emit(stringOperation);
-      this.outAccumulated.emit(this.accumulated);
+      this.setValuesService(stringOperation);
       this.focusInput();
     } catch (error) {
       console.log(error);
     }
+  }
+
+  setValuesService(stringOperation:string){
+    this.calculatorService.accumulated.emit(this.accumulated);
+    this.calculatorService.operation.emit(stringOperation);
   }
 
   setOperationResponse(number: number, prevAcumulated: number) {
