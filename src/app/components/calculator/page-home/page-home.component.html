@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-center">{{'Calculadora'|uppercase}}</h1>
+    <div class="row">
+      <div class="col-md-12 py-2">
+        <app-result [operation]="operation" [accumulated]="getNumberSpanish(accumulated)"></app-result>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 input-bg ">
+        <app-form (inputNumber)="changeInputValue($event)"></app-form>
+      </div>
+      <div class="col-md-2 buttons-bg">
+        <div class="row">
+          <div class="d-grid gap-2">
+            <button
+              type="button"
+              name="btn-sm"
+              (click)="changeValue()"
+              class="btn btn-success"
+            >
+              <i class="fas fa-plus-circle"></i>
+            </button>
+            <button
+            type="button"
+            name="btn-sm"
+            (click)="changeValue(2)"
+            class="btn btn-danger"
+          >
+            <i class="fas fa-minus-circle"></i>
+          </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 buttons-bg">
+        <div class="row">
+          <div class="d-grid gap-2">
+
+            <button
+              type="button"
+              name="btn-sm"
+              (click)="changeValue(3)"
+              class="btn btn-warning"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+            <button
+              type="button"
+              name="btn-sm"
+              (click)="changeValue(4)"
+              class="btn btn-primary"
+            >
+              <i class="fas fa-divide"></i>
+            </button>
+            <button
+              type="button"
+              name="btn-sm"
+              (click)="changeValue(5) "
+              class="btn btn-info"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
