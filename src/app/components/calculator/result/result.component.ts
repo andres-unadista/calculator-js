@@ -14,4 +14,7 @@ export class ResultComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getNumberSpanish(number: number) {
+    return Intl.NumberFormat('es-ES').format(number);
+  }
 }
