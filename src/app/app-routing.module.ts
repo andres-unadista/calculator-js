@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CalculatorModule } from './components/calculator/calculator.module';
 
 const routes: Routes = [
   {
@@ -9,6 +8,11 @@ const routes: Routes = [
       import('./components/calculator/calculator.module').then(
         (m) => m.CalculatorModule
       ),
+  },
+  {
+    path: 'budget',
+    loadChildren: () =>
+      import('./components/budget/budget.module').then((m) => m.BudgetModule),
   },
   { path: '**', pathMatch: 'full', redirectTo: '/calculator' },
 ];
