@@ -6,6 +6,7 @@ import { PageHomeComponent } from './page-home/page-home.component';
 import { SharedModule } from '../shared/shared.module';
 import { ResultComponent } from './result/result.component';
 import { FormComponent } from './form/form.component';
+import { CalculatorService } from './calculator.service';
 
 
 @NgModule({
@@ -18,6 +19,9 @@ import { FormComponent } from './form/form.component';
     CommonModule,
     CalculatorRoutingModule,
     SharedModule
+  ],
+  providers: [
+    CalculatorService
   ],
   exports: [
     PageHomeComponent
