@@ -20,8 +20,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-<<<<<<< HEAD
-=======
   changeValue(operation: number = 1) {
     try {
       let number = +this.inputNumber;
@@ -97,5 +95,4 @@ export class FormComponent implements OnInit {
     ) as HTMLInputElement;
     input.focus();
   }
->>>>>>> develop
 }
