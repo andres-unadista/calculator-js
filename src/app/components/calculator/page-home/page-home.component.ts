@@ -82,10 +82,6 @@ export class PageHomeComponent implements OnInit {
     return Intl.NumberFormat('es-ES').format(number);
   }
 
-  changeInputValue(value:number){
-    this.inputNumber = value.toString();
-  }
-
   focusInput() {
     const input: HTMLInputElement = document.getElementById(
       'inputNumber'

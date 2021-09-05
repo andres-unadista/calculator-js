@@ -3,12 +3,19 @@
     <h1 class="text-center">{{'Calculadora'|uppercase}}</h1>
     <div class="row">
       <div class="col-md-12 py-2">
-        <app-result [operation]="operation" [accumulated]="getNumberSpanish(accumulated)"></app-result>
+        <h4>Resultado: {{operation}} {{ getNumberSpanish(accumulated) }}</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-md-8 input-bg ">
-        <app-form (inputNumber)="changeInputValue($event)"></app-form>
+        <input
+          type="number"
+          placeholder="Ingrese número"
+          class="form-control form-control-lg"
+          [(ngModel)]="inputNumber"
+          id="inputNumber"
+          autofocus
+        />
       </div>
       <div class="col-md-2 buttons-bg">
         <div class="row">
