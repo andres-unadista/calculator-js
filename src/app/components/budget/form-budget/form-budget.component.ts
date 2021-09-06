@@ -40,4 +40,19 @@ export class FormBudgetComponent implements OnInit {
       this._budget.addItemListExpense(budget);
     }
   }
+
+  borderTypeBudget(): string {
+    switch (this.typeBudget) {
+      case 'ingresos':
+        return 'border border-success';
+        break;
+      case 'egresos':
+        return 'border border-danger';
+        break;
+
+      default:
+        return '';
+        break;
+    }
+  }
 }

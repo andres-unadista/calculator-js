@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
       <form id="forma">
         <div class="agregar">
           <div class="agregar_contenedor">
-            <select name="type_money" id="tipo" class="agregar_tipo" [(ngModel)]="typeBudget" required>
+            <select name="type_money" [ngClass]="[borderTypeBudget()]" id="tipo" class="agregar_tipo" [(ngModel)]="typeBudget" required>
               <option value="ingresos">+</option>
               <option value="egresos">-</option>
             </select>

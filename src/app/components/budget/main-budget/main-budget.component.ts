@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { IBudget } from '../budget.model';
 import { BudgetService } from '../budget.service';
@@ -7,6 +7,7 @@ import { BudgetService } from '../budget.service';
   selector: 'app-main-budget',
   templateUrl: './main-budget.component.html',
   styleUrls: ['./main-budget.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MainBudgetComponent implements OnInit {
   budget: IBudget = {
