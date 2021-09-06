@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form id="forma">
+        <div class="agregar">
+          <div class="agregar_contenedor">
+            <select name="type_money" id="tipo" class="agregar_tipo" [(ngModel)]="typeBudget" required>
+              <option value="ingresos">+</option>
+              <option value="egresos">-</option>
+            </select>
+            <input
+              type="text"
+              name="desc"
+              id="desc"
+              placeholder="Descripción"
+              class="agregar_descripcion"
+              [(ngModel)]="description"
+            />
+            <input
+              type="text"
+              name="value"
+              id="value"
+              placeholder="Valor"
+              class="agregar_valor"
+              [(ngModel)]="valueBudget"
+            />
+            <button type="submit" class="agregar_btn" (click)="saveItemBudget()">
+              <i class="fa fa-check-circle" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
