@@ -31,6 +31,8 @@ export class BudgetService {
 
   setBudget() {
     let total = this.totalIncome - this.totalExpense;
+    console.log('total');
+    console.log(total);
     let budgetIncome = this.totalIncome;
     let budgetExpense = this.totalExpense;
     let budget: IBudget = {
@@ -59,5 +61,21 @@ export class BudgetService {
       return (this.totalIncome) / total;
     }
     return (this.totalExpense) / total;
+  }
+
+  deleteIncome(index:number){
+    let income:IBudgetItem = this.listIncome[index];
+    this.totalIncome -= +income.value;
+    this.listIncome.splice(index, 1);
+    this.eventListIncome.emit(this.listIncome);
+    this.setBudget();
+  }
+
+  deleteExpense(index:number){
+    let expense:IBudgetItem = this.listExpense[index];
+    this.totalExpense -= +expense.value;
+    this.listExpense.splice(index, 1);
+    this.eventListExpense.emit(this.listExpense);
+    this.setBudget();
   }
 }

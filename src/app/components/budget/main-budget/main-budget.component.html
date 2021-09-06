@@ -2,7 +2,9 @@
   <div class="cabecero">
     <div class="presupuesto">
       <div class="presupuesto_titulo">Presupuesto Disponible</div>
-      <div class="presupuesto_valor" id="total">{{ budget.total | currency:'COP':true }}</div>
+      <h1 class="text-center">
+        {{ budget.total | currency:'COP':true }}
+      </h1>
       <div class="presupuesto_ingreso limpiarEstilos">
         <div class="presupuesto_ingreso--texto">Ingresos</div>
         <div class="derecha">

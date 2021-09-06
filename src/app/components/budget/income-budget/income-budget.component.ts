@@ -25,4 +25,9 @@ export class IncomeBudgetComponent implements OnInit {
   percentageBudget(value:number){
     return this._budget.percentageBudget(value, true);
   }
+
+  delete(index:number){
+    console.log(index);
+    this._budget.deleteIncome(index);
+  }
 }

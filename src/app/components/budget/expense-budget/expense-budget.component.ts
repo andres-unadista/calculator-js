@@ -27,4 +27,8 @@ export class ExpenseBudgetComponent implements OnInit {
   percentageBudget(value:number){
     return this._budget.percentageBudget(value, false);
   }
+
+  delete(index:number){
+    this._budget.deleteExpense(index);
+  }
 }
