@@ -2,12 +2,19 @@
   <div class="col-md-12">
     <h2 class="ingreso_titulo">Ingreso</h2>
     <div *ngIf="listIncome.length > 0">
-      <div id="list_ingresos" *ngFor="let itemList of listIncome; let i = index">
+      <div
+        id="list_ingresos"
+        *ngFor="let itemList of listIncome; let i = index"
+      >
         <div class="elemento limpiarEstilos" data-id="elemento">
           <div class="elemento_descripcion">{{ itemList.description }}</div>
           <div class="derecha limpiarEstilos">
-            <div class="elemento_valor">{{ itemList.value }}</div>
-            <div class="elemento_porcentaje">{{ percentageBudget(itemList.value) | percent }}</div>
+            <div class="elemento_valor">
+              {{ itemList.value | currency: "COP":"$":"1.1-2" }}
+            </div>
+            <div class="elemento_porcentaje">
+              {{ percentageBudget(itemList.value) | percent }}
+            </div>
             <div class="elemento_eliminar">
               <div class="elemento_eliminar--btn" (click)="delete(i)">
                 <i class="fa fa-window-close" aria-hidden="true"></i>

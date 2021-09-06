@@ -3,7 +3,7 @@
     <div class="presupuesto">
       <div class="presupuesto_titulo">Presupuesto Disponible</div>
       <h1 class="text-center">
-        {{ budget.total | currency:'COP':true }}
+        {{ budget.total | currency: "COP":"$":"1.1-2" }}
       </h1>
       <div class="presupuesto_ingreso limpiarEstilos">
         <div class="presupuesto_ingreso--texto">Ingresos</div>
@@ -12,7 +12,7 @@
             +{{ budget.incomeBudget.value }}
           </div>
           <div class="presupuesto_ingreso--porcentaje">
-            {{ percentageMainBudget(true)|percent }}
+            {{ percentageMainBudget(true) | percent }}
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
             -{{ budget.expenseBudget.value }}
           </div>
           <div class="presupuesto_egreso--porcentaje" id="percentage_egresos">
-            {{ percentageMainBudget(false)|percent }}
+            {{ percentageMainBudget(false) | percent }}
           </div>
         </div>
       </div>

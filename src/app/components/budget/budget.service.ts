@@ -49,30 +49,30 @@ export class BudgetService {
 
   percentageBudget(value: number, typeBudget: boolean) {
     if (typeBudget) {
-      return (value) / this.totalIncome;
+      return value / this.totalIncome;
     }
-    return (value) / this.totalExpense;
+    return value / this.totalExpense;
   }
 
   percentageMainBudget(typeBudget: boolean) {
     let total = this.totalIncome + this.totalExpense;
 
     if (typeBudget) {
-      return (this.totalIncome) / total;
+      return this.totalIncome / total;
     }
-    return (this.totalExpense) / total;
+    return this.totalExpense / total;
   }
 
-  deleteIncome(index:number){
-    let income:IBudgetItem = this.listIncome[index];
+  deleteIncome(index: number) {
+    let income: IBudgetItem = this.listIncome[index];
     this.totalIncome -= +income.value;
     this.listIncome.splice(index, 1);
     this.eventListIncome.emit(this.listIncome);
     this.setBudget();
   }
 
-  deleteExpense(index:number){
-    let expense:IBudgetItem = this.listExpense[index];
+  deleteExpense(index: number) {
+    let expense: IBudgetItem = this.listExpense[index];
     this.totalExpense -= +expense.value;
     this.listExpense.splice(index, 1);
     this.eventListExpense.emit(this.listExpense);
