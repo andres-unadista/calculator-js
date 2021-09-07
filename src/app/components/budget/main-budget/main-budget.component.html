@@ -2,7 +2,7 @@
   <div class="cabecero">
     <div class="presupuesto">
       <div class="presupuesto_titulo">Presupuesto Disponible</div>
-      <h1 class="text-center">
+      <h1 class="text-center mb-2">
         {{ budget.total | currency: "COP":"$":"1.1-2" }}
       </h1>
       <div class="presupuesto_ingreso limpiarEstilos">
@@ -15,6 +15,7 @@
             {{ percentageMainBudget(true) | percent }}
           </div>
         </div>
+
       </div>
       <div class="presupuesto_egreso limpiarEstilos">
         <div class="presupuesto_egreso--texto" id="total_egresos">Egresos</div>
@@ -30,8 +31,14 @@
     </div>
   </div>
   <app-form-budget></app-form-budget>
-  <div class="contenedor container-fluid limpiarEstilos">
+
+  <div class="container mx-auto my-3">
+    <btn-redirect [link]="'/calculator'" [description]="'Calculadora'"></btn-redirect>
+  </div>
+
+  <div class="contenedor container-fluid limpiarEstilos mt-0">
     <app-income-budget></app-income-budget>
     <app-expense-budget></app-expense-budget>
   </div>
 </div>
+

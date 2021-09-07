@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <form id="forma">
+      <form (ngSubmit)="f.form.valid && saveItemBudget()" id="forma" #f="ngForm">
         <div class="agregar">
           <div class="agregar_contenedor">
             <select name="type_money" [ngClass]="[borderTypeBudget()]" id="tipo" class="agregar_tipo" [(ngModel)]="typeBudget" required>
@@ -15,6 +15,7 @@
               placeholder="Descripción"
               class="agregar_descripcion"
               [(ngModel)]="description"
+              required
             />
             <input
               type="text"
@@ -23,8 +24,10 @@
               placeholder="Valor"
               class="agregar_valor"
               [(ngModel)]="valueBudget"
+              required
+
             />
-            <button type="submit" class="agregar_btn" (click)="saveItemBudget()">
+            <button type="submit" class="agregar_btn">
               <i class="fa fa-check-circle" aria-hidden="true"></i>
             </button>
           </div>

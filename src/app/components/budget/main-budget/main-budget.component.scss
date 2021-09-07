@@ -11,8 +11,7 @@
 }
 
 .container-fluid{
-  padding: 0;
-
+  padding: 0!important;
 }
 
 body {
@@ -22,7 +21,9 @@ body {
   position: relative;
   height: 100vh;
   font-weight: 400;
+  background-color: #fff!important;
 }
+
 
 .derecha {
   float: right;

@@ -7,7 +7,6 @@ import { BudgetService } from '../budget.service';
   selector: 'app-main-budget',
   templateUrl: './main-budget.component.html',
   styleUrls: ['./main-budget.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
 export class MainBudgetComponent implements OnInit {
   budget: IBudget = {
