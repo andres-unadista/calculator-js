@@ -8,6 +8,7 @@ import { ExpenseBudgetComponent } from './expense-budget/expense-budget.componen
 import { FormBudgetComponent } from './form-budget/form-budget.component';
 import { BudgetService } from './budget.service';
 import { SharedModule } from '../shared/shared.module';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     MainBudgetComponent,
     IncomeBudgetComponent,
     ExpenseBudgetComponent,
-    FormBudgetComponent
+    FormBudgetComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

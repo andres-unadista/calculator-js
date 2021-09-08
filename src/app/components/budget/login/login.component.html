@@ -1,0 +1,53 @@
+<div class="container d-flex align-items-center">
+  <div class="row w-100">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Iniciar sesión</h4>
+          <form (ngSubmit)="f.form.valid && login(f)" #f="ngForm">
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="form-control"
+                placeholder="@"
+                aria-describedby="emailId"
+                ngModel
+              />
+              <small id="emailId" class="text-muted">Ingrese el correo</small>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="form-control"
+                placeholder="***"
+                aria-describedby="passwordId"
+                ngModel
+              />
+              <small id="passwordId" class="text-muted"
+                >Ingrese la contraseña</small
+              >
+            </div>
+            <div class="mb-3">
+              <div class="d-grid gap-2">
+                <button
+                  type="submit"
+                  name="send"
+                  id="send"
+                  class="btn btn-primary btn-sm"
+                >
+                  Iniciar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

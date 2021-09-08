@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { DataService } from 'src/app/data-service.service';
 import { IBudget, IBudgetItem } from './budget.model';
 
 @Injectable({
@@ -13,10 +14,26 @@ export class BudgetService {
   totalIncome: number = 0;
   totalExpense: number = 0;
 
-  constructor() {}
+  constructor(private _dataService: DataService) {
+    this._dataService.getAllDataService().subscribe((resp: any) => {
+      if (resp) {
+        let budget: IBudget = resp.budget;
+        let incomes: IBudgetItem[] = resp.incomes ? resp.incomes : [];
+        let expenses: IBudgetItem[] = resp.expenses ? resp.expenses : [];
+        this.listIncome = incomes;
+        this.listExpense = expenses;
+        this.totalExpense = budget.expenseBudget.value;
+        this.totalIncome = budget.incomeBudget.value;
+        this.mainBudget.emit(budget);
+        this.eventListIncome.emit(incomes);
+        this.eventListExpense.emit(expenses);
+      }
+    });
+  }
 
   addItemListIncome(income: IBudgetItem) {
     this.totalIncome += +income.value;
+    income.percentage = +income.value / this.totalIncome;
     this.listIncome.push(income);
     this.eventListIncome.emit(this.listIncome);
     this.setBudget();
@@ -24,12 +41,13 @@ export class BudgetService {
 
   addItemListExpense(expense: IBudgetItem) {
     this.totalExpense += +expense.value;
+    expense.percentage = +expense.value / this.totalIncome;
     this.listExpense.push(expense);
     this.eventListExpense.emit(this.listExpense);
     this.setBudget();
   }
 
-  setBudget() {
+  async setBudget() {
     let total = this.totalIncome - this.totalExpense;
     console.log('total');
     console.log(total);
@@ -40,7 +58,17 @@ export class BudgetService {
       expenseBudget: { value: budgetExpense },
       incomeBudget: { value: budgetIncome },
     };
+    await this.saveFirebaseData(budget);
     this.mainBudget.emit(budget);
+  }
+
+  saveFirebaseData(budget: IBudget) {
+    this._dataService
+      .saveDataService(budget, this.listIncome, this.listExpense)
+      .subscribe((resp) => {
+        console.log('save');
+        console.log(resp)
+      });
   }
 
   getBudget() {
