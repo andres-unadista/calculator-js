@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IBudget, IBudgetItem } from '../budget.model';
 import { BudgetService } from '../budget.service';
 
@@ -11,6 +11,7 @@ import { BudgetService } from '../budget.service';
   ],
 })
 export class FormBudgetComponent implements OnInit {
+  @Input() auth:boolean = false;
   description: string = '';
   valueBudget: string = '';
   typeBudget: string = '';
@@ -26,9 +27,11 @@ export class FormBudgetComponent implements OnInit {
     this._budget.mainBudget.subscribe((budget) => {
       this.budget = budget;
     });
+    console.log(this.auth);
   }
 
   saveItemBudget() {
+    console.log('save');
     let budget: IBudgetItem = {} as IBudgetItem;
     budget.description = this.description;
     budget.value = +this.valueBudget;

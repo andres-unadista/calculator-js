@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { DataService } from 'src/app/data-service.service';
 import { IBudget, IBudgetItem } from './budget.model';
+import { LoginService } from './login/login.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,21 +15,23 @@ export class BudgetService {
   totalIncome: number = 0;
   totalExpense: number = 0;
 
-  constructor(private _dataService: DataService) {
-    this._dataService.getAllDataService().subscribe((resp: any) => {
-      if (resp) {
-        let budget: IBudget = resp.budget;
-        let incomes: IBudgetItem[] = resp.incomes ? resp.incomes : [];
-        let expenses: IBudgetItem[] = resp.expenses ? resp.expenses : [];
-        this.listIncome = incomes;
-        this.listExpense = expenses;
-        this.totalExpense = budget.expenseBudget.value;
-        this.totalIncome = budget.incomeBudget.value;
-        this.mainBudget.emit(budget);
-        this.eventListIncome.emit(incomes);
-        this.eventListExpense.emit(expenses);
-      }
-    });
+  constructor(private _dataService: DataService, private _login:LoginService) {
+    if (this._login.isAuthenticated()) {
+      this._dataService.getAllDataService().subscribe((resp: any) => {
+        if (resp) {
+          let budget: IBudget = resp.budget;
+          let incomes: IBudgetItem[] = resp.incomes ? resp.incomes : [];
+          let expenses: IBudgetItem[] = resp.expenses ? resp.expenses : [];
+          this.listIncome = incomes;
+          this.listExpense = expenses;
+          this.totalExpense = budget.expenseBudget.value;
+          this.totalIncome = budget.incomeBudget.value;
+          this.mainBudget.emit(budget);
+          this.eventListIncome.emit(incomes);
+          this.eventListExpense.emit(expenses);
+        }
+      });
+    }
   }
 
   addItemListIncome(income: IBudgetItem) {

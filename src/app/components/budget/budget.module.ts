@@ -9,6 +9,7 @@ import { FormBudgetComponent } from './form-budget/form-budget.component';
 import { BudgetService } from './budget.service';
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
 
 
 @NgModule({

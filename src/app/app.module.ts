@@ -7,19 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalculatorModule } from './components/calculator/calculator.module';
 import { DataService } from './data-service.service';
-
+import { environment } from '../environments/environment';
+import { LoginService } from './components/budget/login/login.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CalculatorModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [DataService],
-  bootstrap: [AppComponent]
+  providers: [DataService, LoginService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

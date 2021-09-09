@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IBudgetItem } from '../budget.model';
 
 import { BudgetService } from '../budget.service';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-expense-budget',
@@ -24,11 +25,11 @@ export class ExpenseBudgetComponent implements OnInit {
     });
   }
 
-  percentageBudget(value:number){
+  percentageBudget(value: number) {
     return this._budget.percentageBudget(value, false);
   }
 
-  delete(index:number){
+  delete(index: number) {
     this._budget.deleteExpense(index);
   }
 }

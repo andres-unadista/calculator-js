@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { IBudget } from '../budget.model';
 import { BudgetService } from '../budget.service';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-main-budget',
@@ -15,19 +17,33 @@ export class MainBudgetComponent implements OnInit {
     total: 0,
   };
 
-  constructor(private _budget: BudgetService) {}
+  constructor(
+    private _budget: BudgetService,
+    private _login: LoginService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this._budget.mainBudget.subscribe(
-      (budget: IBudget) => (this.budget = budget)
-    );
+    if (this.isAuthenticated()) {
+      this._budget.mainBudget.subscribe(
+        (budget: IBudget) => (this.budget = budget)
+      );
+    }
   }
 
-  percentageMainBudget(type:boolean){
+  percentageMainBudget(type: boolean) {
     let percent = this._budget.percentageMainBudget(type);
     if (isNaN(percent)) {
       return 0;
     }
     return percent;
+  }
+
+  isAuthenticated() {
+    return this._login.isAuthenticated();
+  }
+
+  logout() {
+    this._login.logout();
   }
 }

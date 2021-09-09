@@ -15,7 +15,6 @@
             {{ percentageMainBudget(true) | percent }}
           </div>
         </div>
-
       </div>
       <div class="presupuesto_egreso limpiarEstilos">
         <div class="presupuesto_egreso--texto" id="total_egresos">Egresos</div>
@@ -30,10 +29,18 @@
       </div>
     </div>
   </div>
-  <app-form-budget></app-form-budget>
+  <app-form-budget [auth]="isAuthenticated()"></app-form-budget>
 
   <div class="container mx-auto my-3">
-    <btn-redirect [link]="'/calculator'" [description]="'Calculadora'"></btn-redirect>
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-center">
+        <btn-redirect
+          [link]="'/calculator'"
+          [description]="'Calculadora'"
+        ></btn-redirect>
+        <button type="button" class="btn mx-2 p-2 btn-danger" *ngIf="isAuthenticated()" (click)="logout()">Cerrar sesión</button>
+      </div>
+    </div>
   </div>
 
   <div class="contenedor container-fluid limpiarEstilos mt-0">
@@ -41,4 +48,3 @@
     <app-expense-budget></app-expense-budget>
   </div>
 </div>
-
