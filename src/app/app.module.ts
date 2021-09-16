@@ -12,7 +12,7 @@ import { CalculatorModule } from './components/calculator/calculator.module';
 import { DataService } from './data-service.service';
 import { LoginService } from './components/budget/login/login.service';
 import { AppComponent } from './app.component';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 @NgModule({
   declarations: [AppComponent],
   imports: [
