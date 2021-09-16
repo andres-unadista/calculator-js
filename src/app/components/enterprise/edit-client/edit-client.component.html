@@ -1,0 +1,117 @@
+<div class="card">
+  <div class="card-body">
+    <form
+      #clientForm="ngForm"
+      (ngSubmit)="updateClient(clientForm)"
+      *ngIf="client"
+    >
+      <div class="modal-body">
+        <h4 class="card-title">Actualizar cliente</h4>
+        <div class="row">
+          <div class="col">
+            <div class="d-grid gap-2">
+              <!-- Button trigger modal -->
+              <button
+                type="submit"
+                class="btn btn-sm btn-primary btn-block"
+                title="actualizar"
+              >
+                <i class="fas fa-save"></i> Actualizar
+              </button>
+            </div>
+          </div>
+          <div class="col">
+            <div class="d-grid gap-2">
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                (click)="deleteClient()"
+                class="btn btn-sm btn-danger btn-block"
+                title="eliminar"
+              >
+                <i class="fas fa-trash"></i> Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre:</label>
+          <input
+            type="text"
+            [(ngModel)]="client.name"
+            name="name"
+            #name="ngModel"
+            [ngClass]="{ 'is-invalid': name?.errors && name.touched }"
+            required
+            class="form-control"
+            placeholder="Ingrese nombre"
+            aria-describedby="name"
+          />
+          <div [hidden]="!name.errors?.required" class="invalid-feedback">
+            El nombre es requerido
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="last_name" class="form-label">Apellido:</label>
+          <input
+            [(ngModel)]="client.last_name"
+            name="last_name"
+            type="text"
+            #last_name="ngModel"
+            [ngClass]="{
+              'is-invalid': last_name?.errors && last_name.touched
+            }"
+            required
+            class="form-control"
+            placeholder="Ingrese apellido"
+            aria-describedby="last_name"
+          />
+          <div [hidden]="!last_name.errors?.required" class="invalid-feedback">
+            El apellido es requerido
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo:</label>
+          <input
+            type="email"
+            [(ngModel)]="client.email"
+            name="email"
+            #email="ngModel"
+            [ngClass]="{ 'is-invalid': email?.errors && email.touched }"
+            required
+            class="form-control"
+            placeholder="Ingrese correo"
+            aria-describedby="email"
+            pattern="^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"
+          />
+          <div [hidden]="!email.errors?.required" class="invalid-feedback">
+            El correo es requerido
+          </div>
+          <div [hidden]="!email.errors?.pattern" class="invalid-feedback">
+            El correo no es válido
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="balance" class="form-label">Saldo:</label>
+          <input
+            [(ngModel)]="client.balance"
+            name="balance"
+            type="number"
+            #balance="ngModel"
+            [ngClass]="{ 'is-invalid': balance?.errors && balance.touched }"
+            required
+            class="form-control"
+            placeholder="Ingrese saldo"
+            aria-describedby="balance"
+          />
+          <div [hidden]="!balance.errors?.required" class="invalid-feedback">
+            El Saldo es requerido
+          </div>
+          <div [hidden]="!balance.hasError('min')" class="invalid-feedback">
+            El Saldo debe tener mínimo una cantidad de $1.000
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

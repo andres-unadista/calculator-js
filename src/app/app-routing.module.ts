@@ -15,6 +15,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/budget/budget.module').then((m) => m.BudgetModule),
   },
+  {
+    path: 'enterprise',
+    loadChildren: () =>
+      import('./components/enterprise/enterprise.module').then(
+        (m) => m.EnterpriseModule
+      ),
+  },
   { path: '**', pathMatch: 'full', redirectTo: '/calculator' },
 ];
 

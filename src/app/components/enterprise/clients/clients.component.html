@@ -1,0 +1,191 @@
+<section id="actions" class="py-4">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="d-grid gap-2">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-sm btn-success btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#modelClient"
+        >
+          <i class="fas fa-plus-circle"></i> Añadir cliente
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 table-responsive">
+      <table class="table" *ngIf="clients.length > 0">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Saldo</th>
+            <th>Actualizar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients">
+            <td scope="row">{{ client.id }}</td>
+            <td>{{ client.name }} {{ client.last_name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.balance | currency: "COP":"$" }}</td>
+            <td>
+              <a
+                name="edit"
+                class="btn btn-sm btn-warning btn-sm"
+                routerLink="/enterprise/clients/edit/{{ client.id }}"
+                role="button"
+                ><i class="fas fa-edit"></i> Editar</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Saldo total</h4>
+          <p class="card-text display-6">
+            {{ getTotal() | currency: "COP" }}
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Total usuarios</h4>
+          <p class="card-text display-6">
+            <i class="fas fa-users"></i> {{ clients.length }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modelClient"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modelTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Añadir cliente</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #btnClose
+        ></button>
+      </div>
+      <form #clientForm="ngForm" (ngSubmit)="addClient(clientForm)">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre:</label>
+            <input
+              type="text"
+              [(ngModel)]="client2.name"
+              name="name"
+              #name="ngModel"
+              [ngClass]="{ 'is-invalid': name?.errors && name.touched }"
+              required
+              class="form-control"
+              placeholder="Ingrese nombre"
+              aria-describedby="name"
+            />
+            <div [hidden]="!name.errors?.required" class="invalid-feedback">
+              El nombre es requerido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="last_name" class="form-label">Apellido:</label>
+            <input
+              [(ngModel)]="client2.last_name"
+              name="last_name"
+              type="text"
+              #last_name="ngModel"
+              [ngClass]="{
+                'is-invalid': last_name?.errors && last_name.touched
+              }"
+              required
+              class="form-control"
+              placeholder="Ingrese apellido"
+              aria-describedby="last_name"
+            />
+            <div
+              [hidden]="!last_name.errors?.required"
+              class="invalid-feedback"
+            >
+              El apellido es requerido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo:</label>
+            <input
+              type="email"
+              [(ngModel)]="client2.email"
+              name="email"
+              #email="ngModel"
+              [ngClass]="{ 'is-invalid': email?.errors && email.touched }"
+              required
+              class="form-control"
+              placeholder="Ingrese correo"
+              aria-describedby="email"
+              pattern="^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$"
+            />
+            <div [hidden]="!email.errors?.required" class="invalid-feedback">
+              El correo es requerido
+            </div>
+            <div [hidden]="!email.errors?.pattern" class="invalid-feedback">
+              El correo no es válido
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="balance" class="form-label">Saldo:</label>
+            <input
+              [(ngModel)]="client2.balance"
+              name="balance"
+              type="number"
+              #balance="ngModel"
+              [ngClass]="{ 'is-invalid': balance?.errors && balance.touched }"
+              required
+              class="form-control"
+              placeholder="Ingrese saldo"
+              aria-describedby="balance"
+            />
+            <div [hidden]="!balance.errors?.required" class="invalid-feedback">
+              El Saldo es requerido
+            </div>
+            <div [hidden]="!balance.hasError('min')" class="invalid-feedback">
+                El Saldo debe tener mínimo una cantidad de $1.000
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="d-grid gap-2">
+            <!-- Button trigger modal -->
+            <button
+              type="submit"
+              class="btn btn-sm btn-primary btn-block"
+              title="guardar"
+            >
+              <i class="fas fa-save"></i> Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
