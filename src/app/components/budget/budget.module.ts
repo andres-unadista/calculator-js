@@ -11,22 +11,28 @@ import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 
+import firebase from 'firebase';
+import { environment } from 'src/environments/environment';
 
+if (!firebase.apps.length) {
+  firebase.initializeApp(environment.firebaseConfig);
+} else {
+  firebase
+    .app()
+    .delete()
+    .then(() => {
+      firebase.initializeApp(environment.firebaseConfig);
+    });
+}
 @NgModule({
   declarations: [
     MainBudgetComponent,
     IncomeBudgetComponent,
     ExpenseBudgetComponent,
     FormBudgetComponent,
-    LoginComponent
+    LoginComponent,
   ],
-  imports: [
-    CommonModule,
-    BudgetRoutingModule,
-    SharedModule
-  ],
-  providers: [
-    BudgetService
-  ]
+  imports: [CommonModule, BudgetRoutingModule, SharedModule],
+  providers: [BudgetService],
 })
-export class BudgetModule { }
+export class BudgetModule {}

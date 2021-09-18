@@ -1,1 +1,58 @@
-<p>register works!</p>
+<header id="actions" class="py-4 bg-light" id="header-client">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><i class="fas fa-user-circle"></i> Registrarse</h1>
+    </div>
+  </div>
+</header>
+
+<section id="client" class="my-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <form (ngSubmit)="register()">
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="form-control"
+                  [(ngModel)]="email"
+                  placeholder="Ingrese correo"
+                  aria-describedby="emailId"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  [(ngModel)]="password"
+                  class="form-control"
+                  placeholder="Ingrese contraseña"
+                  aria-describedby="passwordId"
+                />
+              </div>
+              <div class="mb-3">
+                <div class="d-grid gap-2">
+                  <button
+                    type="submit"
+                    name="btnLogin"
+                    id="btnLogin"
+                    class="btn btn-primary btn-sm"
+                  >
+                    Registrarse
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

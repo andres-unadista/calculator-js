@@ -1,20 +1,46 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-    <div class="container">
-    <a class="navbar-brand" href="#">Empresa Tester</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-      aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/enterprise">Empresa Tester</a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
+        <li class="nav-item active" *ngIf="isLoggedIn">
           <a class="nav-link" routerLink="/enterprise">Inicio</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle    "></i>Bienvenido</a>
+        <li class="nav-item dropdown" *ngIf="isLoggedIn">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="dropdownId"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ><i class="fas fa-user-circle"></i>Bienvenido {{ loggedInUser }}</a
+          >
           <div class="dropdown-menu" aria-labelledby="dropdownId">
-            <a class="dropdown-item" href="#"><i class="fas fa-user-cog    "></i>Configuración</a>
+            <a class="dropdown-item" routerLink="/enterprise/config"
+              ><i class="fas fa-user-cog"></i>Configuración</a
+            >
+            <a class="dropdown-item" (click)="logout()"
+              ><i class="fas fa-user-clock"></i>Cerrar sesión</a
+            >
           </div>
+        </li>
+        <li class="nav-item active" *ngIf="!isLoggedIn">
+          <a class="nav-link" routerLink="/enterprise/login">Iniciar sesión</a>
+        </li>
+        <li class="nav-item active" *ngIf="!isLoggedIn && isAllowRegister">
+          <a class="nav-link" routerLink="/enterprise/register">Registrarse</a>
         </li>
       </ul>
     </div>

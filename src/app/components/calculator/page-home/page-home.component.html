@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row mt-2">
-    <div class="col-md-10 mx-auto p-3 shadow" style="background-color: transparent!important;">
+    <div
+      class="col-md-10 mx-auto p-3 shadow"
+      style="background-color: transparent !important"
+    >
       <div class="card border-light p-3">
         <div class="card-body">
           <h1 class="text-center">{{ "Calculadora" | uppercase }}</h1>
@@ -13,10 +16,16 @@
             </div>
           </div>
           <app-form [inputPrevAccumulated]="inputAccumulated"></app-form>
-          <btn-redirect
-            [link]="'/budget'"
-            [description]="'Página de cartera'"
-          ></btn-redirect>
+          <div class="d-flex justify-content-between mt-2">
+            <btn-redirect
+              [link]="'/budget'"
+              [description]="'Página de cartera'"
+            ></btn-redirect>
+            <btn-redirect
+              [link]="'/enterprise'"
+              [description]="'Página de empresa'"
+            ></btn-redirect>
+          </div>
         </div>
       </div>
     </div>
