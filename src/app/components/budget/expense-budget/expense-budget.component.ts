@@ -3,14 +3,17 @@ import { IBudgetItem } from '../budget.model';
 
 import { BudgetService } from '../budget.service';
 import { LoginService } from '../login/login.service';
+import { NgIf, NgFor, PercentPipe, CurrencyPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-expense-budget',
-  templateUrl: './expense-budget.component.html',
-  styleUrls: [
-    './expense-budget.component.scss',
-    '../main-budget/main-budget.component.scss',
-  ],
+    selector: 'app-expense-budget',
+    templateUrl: './expense-budget.component.html',
+    styleUrls: [
+        './expense-budget.component.scss',
+        '../main-budget/main-budget.component.scss',
+    ],
+    standalone: true,
+    imports: [NgIf, NgFor, PercentPipe, CurrencyPipe]
 })
 export class ExpenseBudgetComponent implements OnInit {
   listExpense: IBudgetItem[] = [];

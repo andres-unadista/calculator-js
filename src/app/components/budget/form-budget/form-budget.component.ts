@@ -1,14 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IBudget, IBudgetItem } from '../budget.model';
 import { BudgetService } from '../budget.service';
+import { NgClass } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-form-budget',
-  templateUrl: './form-budget.component.html',
-  styleUrls: [
-    './form-budget.component.scss',
-    '../main-budget/main-budget.component.scss',
-  ],
+    selector: 'app-form-budget',
+    templateUrl: './form-budget.component.html',
+    styleUrls: [
+        './form-budget.component.scss',
+        '../main-budget/main-budget.component.scss',
+    ],
+    standalone: true,
+    imports: [FormsModule, NgClass]
 })
 export class FormBudgetComponent implements OnInit {
   @Input() auth:boolean = false;

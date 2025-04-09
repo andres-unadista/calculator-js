@@ -13,7 +13,7 @@ import { ConfigComponent } from './config/config.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
-import { SharedModule } from '../shared/shared.module';
+
 import { environment } from 'src/environments/environment';
 import { AuthGuard } from './guards/auth.guard';
 import { RegisterComponent } from './register/register.component';
@@ -39,10 +39,9 @@ import { RegisterGuard } from './guards/register.guard';
   imports: [
     CommonModule,
     EnterpriseRoutingModule,
-    SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-  ],
+    AngularFirestoreModule
+],
   providers: [
     ClientsService,
     AuthService,
