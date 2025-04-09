@@ -2,11 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
-<<<<<<< HEAD
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-=======
 import { FormsModule } from '@angular/forms';
->>>>>>> calculator-branch
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',

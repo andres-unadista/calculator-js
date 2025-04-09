@@ -12,12 +12,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './edit-client.component.html',
   styleUrls: ['./edit-client.component.scss'],
   standalone: true,
-<<<<<<< HEAD
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
-=======
->>>>>>> calculator-branch
+  imports: [FormsModule, CommonModule, RouterModule],
+})
 export class EditClientComponent implements OnInit {
   idClient: number;
+  client: IClient = {} as IClient;
 
   constructor(
     private aRoute: ActivatedRoute,
