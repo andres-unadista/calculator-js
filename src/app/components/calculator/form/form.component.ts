@@ -15,7 +15,7 @@ export class FormComponent implements OnInit {
   operationPrevious: number = 0;
   statusModify: boolean = false;
 
-  constructor(private calculatorService:CalculatorService) {}
+  constructor(private calculatorService: CalculatorService) {}
 
   ngOnInit(): void {}
 
@@ -24,7 +24,9 @@ export class FormComponent implements OnInit {
       let number = +this.inputNumber;
       let stateAccumulated = this.inputPrevAccumulated;
       this.statusModify = this.inputPrevAccumulated ? true : false;
-      this.accumulated = !this.inputPrevAccumulated ? 0 : this.inputPrevAccumulated;
+      this.accumulated = !this.inputPrevAccumulated
+        ? 0
+        : this.inputPrevAccumulated;
 
       switch (operation) {
         case 1:
@@ -65,7 +67,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  setValuesService(stringOperation:string){
+  setValuesService(stringOperation: string) {
     this.calculatorService.accumulated.emit(this.accumulated);
     this.calculatorService.operation.emit(stringOperation);
   }

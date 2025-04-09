@@ -29,3 +29,4 @@ export class ConfigService {
     return this.configDoc.update(config);
   }
 }
+
