@@ -7,11 +7,10 @@ import { IncomeBudgetComponent } from './income-budget/income-budget.component';
 import { ExpenseBudgetComponent } from './expense-budget/expense-budget.component';
 import { FormBudgetComponent } from './form-budget/form-budget.component';
 import { BudgetService } from './budget.service';
-import { SharedModule } from '../shared/shared.module';
-import { LoginComponent } from './login/login.component';
-import { LoginService } from './login/login.service';
 
-import firebase from 'firebase';
+import { LoginComponent } from './login/login.component';
+
+import firebase from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
 
 if (!firebase.apps.length) {
@@ -25,14 +24,11 @@ if (!firebase.apps.length) {
     });
 }
 @NgModule({
-  declarations: [
-    MainBudgetComponent,
+    imports: [CommonModule, BudgetRoutingModule, MainBudgetComponent,
     IncomeBudgetComponent,
     ExpenseBudgetComponent,
     FormBudgetComponent,
-    LoginComponent,
-  ],
-  imports: [CommonModule, BudgetRoutingModule, SharedModule],
-  providers: [BudgetService],
+    LoginComponent],
+    providers: [BudgetService]
 })
 export class BudgetModule {}

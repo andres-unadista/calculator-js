@@ -8,11 +8,11 @@ fdescribe('Calculadora', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [FormComponent],
-      providers: [
+    imports: [FormComponent],
+    providers: [
         CalculatorService
-      ]
-    }).compileComponents();
+    ]
+}).compileComponents();
   }))
 
   beforeEach(() => {

@@ -1,10 +1,16 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { CalculatorService } from '../calculator.service';
+import { UpperCasePipe } from '@angular/common';
+import { BtnRedirectComponent } from '../../shared/btn-redirect/btn-redirect.component';
+import { FormComponent } from '../form/form.component';
+import { ResultComponent } from '../result/result.component';
 
 @Component({
-  selector: 'calculator-item',
-  templateUrl: './page-home.component.html',
-  styleUrls: ['./page-home.component.scss'],
+    selector: 'calculator-item',
+    templateUrl: './page-home.component.html',
+    styleUrls: ['./page-home.component.scss'],
+    standalone: true,
+    imports: [ResultComponent, FormComponent, BtnRedirectComponent, UpperCasePipe]
 })
 export class PageHomeComponent implements OnInit, OnDestroy {
   inputOperation: string = '';

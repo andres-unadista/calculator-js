@@ -4,11 +4,16 @@ import { ToastrService } from 'ngx-toastr';
 
 import { IClient } from '../models/client.interface';
 import { ClientsService } from '../services/clients.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss'],
+  standalone: true,
+  imports: [FormsModule, CommonModule, RouterModule]
 })
 export class ClientsComponent implements OnInit {
   clients: IClient[] = [];

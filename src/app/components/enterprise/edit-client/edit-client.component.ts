@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 
 import { IClient } from '../models/client.interface';
 import { ClientsService } from '../services/clients.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-edit-client',
   templateUrl: './edit-client.component.html',
   styleUrls: ['./edit-client.component.scss'],
+  standalone: true,
+  imports: [FormsModule, RouterModule, CommonModule]
 })
 export class EditClientComponent implements OnInit {
   client: IClient;

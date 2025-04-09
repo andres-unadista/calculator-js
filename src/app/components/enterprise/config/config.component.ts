@@ -3,10 +3,13 @@ import { Router } from '@angular/router';
 
 import { IConfiguration } from '../models/config.interface';
 import { ConfigService } from '../services/config.service';
+import { FormsModule } from '@angular/forms';
 @Component({
-  selector: 'app-config',
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.scss'],
+    selector: 'app-config',
+    templateUrl: './config.component.html',
+    styleUrls: ['./config.component.scss'],
+    standalone: true,
+    imports: [FormsModule]
 })
 export class ConfigComponent implements OnInit {
   allow: boolean;
