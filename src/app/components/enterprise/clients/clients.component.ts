@@ -3,8 +3,8 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 
 import { IClient } from '../models/client.interface';
 import { ClientsService } from '../services/clients.service';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-clients',

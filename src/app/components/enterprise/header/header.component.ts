@@ -5,11 +5,11 @@ import { ConfigService } from '../services/config.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  imports: [CommonModule],
-  standalone: true,
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: true,
+    imports: [CommonModule]
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;

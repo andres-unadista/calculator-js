@@ -5,7 +5,6 @@ import {
   CanActivate,
   Router,
   RouterStateSnapshot,
-  UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,7 +13,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  private afAuth:any = inject(AngularFireAuth);
+  afAuth: AngularFireAuth = inject(AngularFireAuth);
+
   constructor(private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
