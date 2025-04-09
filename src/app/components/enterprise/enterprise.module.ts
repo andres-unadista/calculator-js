@@ -24,12 +24,15 @@ import { ClientsService } from './services/clients.service';
 import { AuthService } from './services/auth.service';
 import { ConfigService } from './services/config.service';
 import { RegisterGuard } from './guards/register.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     EnterpriseRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule

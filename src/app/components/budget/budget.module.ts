@@ -9,9 +9,8 @@ import { FormBudgetComponent } from './form-budget/form-budget.component';
 import { BudgetService } from './budget.service';
 
 import { LoginComponent } from './login/login.component';
-import { LoginService } from './login/login.service';
 
-import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
 
 if (!firebase.apps.length) {

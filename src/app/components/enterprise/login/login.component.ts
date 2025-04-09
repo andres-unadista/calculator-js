@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
+  imports: [FormsModule, ReactiveFormsModule],
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  standalone: true,
 })
 export class LoginComponent implements OnInit {
   email: string;
@@ -15,7 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private _login: AuthService,
     private router: Router,
-    private _toast: ToastrService,
     private _auth: AuthService
   ) {}
 
@@ -34,6 +35,6 @@ export class LoginComponent implements OnInit {
         console.log('LOGIN');
         this.router.navigateByUrl('/enterprise');
       })
-      .catch((err: any) => this._toast.error(err));
+      .catch((err: any) => {});
   }
 }

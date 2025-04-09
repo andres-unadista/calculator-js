@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule],
 })
 export class RegisterComponent implements OnInit {
   email: string = '';
@@ -15,7 +17,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private _auth: AuthService,
-    private _toast: ToastrService,
     private router: Router
   ) {}
 
@@ -28,7 +29,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['enterprise']);
       })
       .catch((err) => {
-        this._toast.error(err);
       });
   }
 }

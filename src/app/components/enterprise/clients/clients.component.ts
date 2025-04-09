@@ -1,14 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 
 import { IClient } from '../models/client.interface';
 import { ClientsService } from '../services/clients.service';
+import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss'],
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule],
 })
 export class ClientsComponent implements OnInit {
   clients: IClient[] = [];
@@ -17,7 +20,7 @@ export class ClientsComponent implements OnInit {
   @ViewChild('btnClose') btnClose: ElementRef;
   @ViewChild('clientForm') clientForm: NgForm;
 
-  constructor(private _client: ClientsService, private toast:ToastrService) {}
+  constructor(private _client: ClientsService) {}
 
   ngOnInit() {
     this.getClients();
@@ -41,7 +44,6 @@ export class ClientsComponent implements OnInit {
 
   addClient({value, valid}: {value:IClient, valid: boolean | null}){
     if (!valid) {
-      this.toast.error('El formulario no es válido. Por favor, debe diligenciar correctamente el formulario.');
     } else {
       // add client
       this._client.addClient(this.client2);

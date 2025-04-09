@@ -1,5 +1,5 @@
 //import * as firebase from 'firebase';
-import firebase from 'firebase';
+import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
@@ -16,15 +16,15 @@ export class LoginService {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((response) => {
+      .then((response: any) => {
         return firebase.auth().currentUser!.getIdToken();
       })
-      .then((token) => {
+      .then((token:string) => {
         this.token = token;
         console.log('token obtenido:' + this.token);
         this.router.navigate(['/budget']);
       })
-      .catch((err) => console.error(err));
+      .catch((err:any) => console.error(err));
   }
 
   getIdToken() {
@@ -45,6 +45,6 @@ export class LoginService {
         console.log('dentro de signout');
         this.router.navigate(['/budget/login']);
       })
-      .catch((error) => console.log(error));
+      .catch((error:any) => console.log(error));
   }
 }
